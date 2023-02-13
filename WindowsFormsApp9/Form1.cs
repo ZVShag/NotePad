@@ -15,6 +15,8 @@ namespace WindowsFormsApp9
     {
         public string filename="Новый";
         public bool fb=false;
+        public string buff;
+        public string snif;
         public Form1()
         {
             InitializeComponent();
@@ -106,6 +108,57 @@ namespace WindowsFormsApp9
                 {
                     MessageBox.Show("Не могу сохранить файл!");
                 }
+            }
+        }
+
+        private void копироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode==Keys.C)
+                buff=textBox1.SelectedText;
+           
+        }
+
+        private void вырезатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buff=textBox1.SelectedText;
+            textBox1.SelectedText = "";
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            snif = snif + e.KeyChar+"/n";
+            
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+         
+        }
+
+        private void изменитьШрифтToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (fontDialog1.ShowDialog()==DialogResult.OK)
+            {
+                textBox1.Font=fontDialog1.Font;
+            }
+
+        }
+
+        private void изменитьФонToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog()== DialogResult.OK)
+            {
+                textBox1.BackColor=colorDialog1.Color;
             }
         }
     }
