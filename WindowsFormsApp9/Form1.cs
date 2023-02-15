@@ -17,6 +17,7 @@ namespace WindowsFormsApp9
         public bool fb=false;
         public string buff;
         public string snif;
+        public string f_str;
         public Form1()
         {
             InitializeComponent();
@@ -181,7 +182,7 @@ namespace WindowsFormsApp9
 
         private void найтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Find find = new Find();
+            Find find = new Find(f_str);
             this.Hide();
             find.Show();
             

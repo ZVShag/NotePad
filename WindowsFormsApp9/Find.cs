@@ -14,9 +14,10 @@ namespace WindowsFormsApp9
     {
         
         public string find_str;
-        public Find()
+        public Find(string s)
         {
             InitializeComponent();
+            find_str = s;
         }
 
         private void button1_Click(object sender, EventArgs e)
