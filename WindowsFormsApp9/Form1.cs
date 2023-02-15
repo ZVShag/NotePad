@@ -74,15 +74,23 @@ namespace WindowsFormsApp9
             }
             else
             {
+                
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        filename = saveFileDialog1.FileName + ".txt";
-                        StreamWriter sw = new StreamWriter(filename);
-                        sw.WriteLine(textBox1.Text);
-                        sw.Close();
-                        filename = saveFileDialog1.FileName;
+                        if (String.IsNullOrEmpty(textBox1.Text))
+                        {
+                            errorProvider1.SetError(textBox1, "Пустой файл сохранить нельзя!");
+                        }
+                        else
+                        {
+                            filename = saveFileDialog1.FileName;
+                            StreamWriter sw = new StreamWriter(filename);
+                            sw.WriteLine(textBox1.Text);
+                            sw.Close();
+                            filename = saveFileDialog1.FileName;
+                        }
                     }
                     catch
                     {
@@ -94,21 +102,30 @@ namespace WindowsFormsApp9
         }
         private void Savefile(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog()== DialogResult.OK)
-            {
-                try 
+            
+         
+                if (saveFileDialog1.ShowDialog()== DialogResult.OK)
                 {
-                    filename = saveFileDialog1.FileName+".txt";
-                    StreamWriter sw = new StreamWriter(filename);
-                    sw.WriteLine(textBox1.Text);
-                    sw.Close();
-                    filename = saveFileDialog1.FileName;
+                    try 
+                    {
+                    if (String.IsNullOrEmpty(textBox1.Text))
+                    {
+                        errorProvider1.SetError(textBox1, "Пустой файл сохранить нельзя!");
+                    }
+                    else
+                    {
+                        filename = saveFileDialog1.FileName;
+                        StreamWriter sw = new StreamWriter(filename);
+                        sw.WriteLine(textBox1.Text);
+                        sw.Close();
+                        filename = saveFileDialog1.FileName;
+                    }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Не могу сохранить файл!");
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Не могу сохранить файл!");
-                }
-            }
         }
 
         private void копироватьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -160,6 +177,14 @@ namespace WindowsFormsApp9
             {
                 textBox1.BackColor=colorDialog1.Color;
             }
+        }
+
+        private void найтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Find find = new Find();
+            this.Hide();
+            find.Show();
+            
         }
     }
 }
