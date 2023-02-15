@@ -185,6 +185,7 @@ namespace WindowsFormsApp9
             this.Hide();
             find.Show();
             
+            
         }
     }
 }

@@ -12,6 +12,7 @@ namespace WindowsFormsApp9
 {
     public partial class Find : Form
     {
+        
         public string find_str;
         public Find()
         {
@@ -22,10 +23,12 @@ namespace WindowsFormsApp9
         {
             if (String.IsNullOrEmpty(textBox1.Text))
                 MessageBox.Show("Пустое поле ввода!");
-
             else
-            { find_str = textBox1.Text; }
-
+            {
+                find_str = textBox1.Text;
+                this.Close();
+                
+            }
         }
     }
 }
